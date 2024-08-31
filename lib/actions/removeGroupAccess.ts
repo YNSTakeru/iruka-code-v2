@@ -50,8 +50,8 @@ export async function removeGroupAccess({ groupId, documentId }: Props) {
     return {
       error: {
         code: 401,
-        message: "Not signed in",
-        suggestion: "Sign in to remove a user",
+        message: "ログインできません。",
+        suggestion: "ログインしてからユーザーを削除してください。",
       },
     };
   }

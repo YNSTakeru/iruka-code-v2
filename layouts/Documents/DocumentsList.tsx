@@ -1,8 +1,5 @@
 "use client";
 
-import clsx from "clsx";
-import { useSession } from "next-auth/react";
-import { ComponentProps, useMemo, useState } from "react";
 import {
   DocumentCreatePopover,
   DocumentRowSkeleton,
@@ -13,10 +10,12 @@ import { GetDocumentsProps } from "@/lib/actions";
 import { usePaginatedDocumentsSWR } from "@/lib/hooks";
 import { Button } from "@/primitives/Button";
 import { Container } from "@/primitives/Container";
-import { Select } from "@/primitives/Select";
 import { Spinner } from "@/primitives/Spinner";
 import { DocumentType, Group } from "@/types";
 import { capitalize } from "@/utils";
+import clsx from "clsx";
+import { useSession } from "next-auth/react";
+import { ComponentProps, useMemo, useState } from "react";
 import styles from "./DocumentsList.module.css";
 
 // Load `x` documents at a time
@@ -117,7 +116,7 @@ export function DocumentsList({
       sideOffset={12}
     >
       <Button icon={<PlusIcon />}>
-        {group?.id ? "New document" : "New draft"}
+        {group?.id ? "New document" : "新規作成"}
       </Button>
     </DocumentCreatePopover>
   );
@@ -132,23 +131,7 @@ export function DocumentsList({
         <h1 className={styles.headerTitle}>
           {group?.name ?? capitalize(filter)}
         </h1>
-        <div className={styles.headerActions}>
-          <Select
-            initialValue="all"
-            items={[
-              { value: "all", title: "All" },
-              { value: "text", title: "Text" },
-              { value: "whiteboard", title: "Whiteboard" },
-              { value: "spreadsheet", title: "Spreadsheet", disabled: true },
-            ]}
-            onChange={(value: "all" | DocumentType) => {
-              setDocumentType(value);
-              revalidateDocuments();
-            }}
-            className={styles.headerSelect}
-          />
-          {createDocumentButton}
-        </div>
+        <div className={styles.headerActions}>{createDocumentButton}</div>
       </div>
 
       <div className={styles.container}>

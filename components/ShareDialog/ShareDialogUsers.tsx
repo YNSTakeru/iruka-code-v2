@@ -1,9 +1,9 @@
-import clsx from "clsx";
-import { ComponentProps } from "react";
 import { removeUserAccess, updateUserAccess } from "@/lib/actions";
 import { Avatar } from "@/primitives/Avatar";
 import { Select } from "@/primitives/Select";
 import { Document, DocumentAccess, DocumentUser } from "@/types";
+import clsx from "clsx";
+import { ComponentProps } from "react";
 import styles from "./ShareDialogRows.module.css";
 
 interface Props extends ComponentProps<"div"> {
@@ -85,7 +85,9 @@ export function ShareDialogUsers({
                 </>
               ) : null}
               {isCurrentUser ? (
-                <span className={styles.rowDescription}>This is you</span>
+                <span className={styles.rowDescription}>
+                  あなたのアカウントです
+                </span>
               ) : null}
             </div>
             {!isCurrentUser && id !== documentOwner ? (

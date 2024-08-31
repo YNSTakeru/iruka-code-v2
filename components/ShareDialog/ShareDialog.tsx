@@ -1,6 +1,3 @@
-import * as Tabs from "@radix-ui/react-tabs";
-import { useSession } from "next-auth/react";
-import { ComponentProps, useCallback, useEffect, useState } from "react";
 import { UserIcon, UsersIcon } from "@/icons";
 import {
   getDocument,
@@ -9,18 +6,21 @@ import {
 } from "@/lib/actions";
 import { useDocumentsFunctionSWR, useInitialDocument } from "@/lib/hooks";
 import { getDocumentAccess } from "@/lib/utils";
+import { Dialog } from "@/primitives/Dialog";
+import { DocumentAccess } from "@/types";
 import {
   useBroadcastEvent,
   useEventListener,
 } from "@liveblocks/react/suspense";
-import { Dialog } from "@/primitives/Dialog";
-import { DocumentAccess } from "@/types";
+import * as Tabs from "@radix-ui/react-tabs";
+import { useSession } from "next-auth/react";
+import { ComponentProps, useCallback, useEffect, useState } from "react";
+import styles from "./ShareDialog.module.css";
 import { ShareDialogDefault } from "./ShareDialogDefault";
 import { ShareDialogGroups } from "./ShareDialogGroups";
 import { ShareDialogInviteGroup } from "./ShareDialogInviteGroup";
 import { ShareDialogInviteUser } from "./ShareDialogInviteUser";
 import { ShareDialogUsers } from "./ShareDialogUsers";
-import styles from "./ShareDialog.module.css";
 
 type Props = Omit<ComponentProps<typeof Dialog>, "content" | "title">;
 
@@ -203,7 +203,7 @@ export function ShareDialog({ children, ...props }: Props) {
           />
         </div>
       }
-      title="Share document"
+      title="コードを共有"
       {...props}
     >
       {children}

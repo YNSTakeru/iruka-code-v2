@@ -2,7 +2,7 @@ import { auth, signIn } from "@/auth";
 import { DASHBOARD_URL } from "@/constants";
 import { SignInIcon } from "@/icons";
 import { MarketingLayout } from "@/layouts/Marketing";
-import { Button, LinkButton } from "@/primitives/Button";
+import { Button } from "@/primitives/Button";
 import { Container } from "@/primitives/Container";
 import clsx from "clsx";
 import { redirect } from "next/navigation";
@@ -35,12 +35,10 @@ export default async function Index() {
     <MarketingLayout>
       <Container className={styles.section}>
         <div className={styles.heroInfo}>
-          <h1 className={styles.heroTitle}>
-            Kickstart your collaborative&nbsp;app
-          </h1>
+          <h1 className={styles.heroTitle}>お手軽にコードを共有しよう</h1>
           <p className={styles.heroLead}>
-            Use the Liveblocks Starter Kit to build your document-based
-            collaborative app in&nbsp;minutes.
+            Iruka
+            Codeを使って、リアルタイムでコードを共有しましょう。先生や生徒の学習をサポートします。
           </p>
         </div>
         <div className={styles.heroActions}>
@@ -50,73 +48,8 @@ export default async function Index() {
               await signIn();
             }}
           >
-            <Button icon={<SignInIcon />}>Sign in</Button>
+            <Button icon={<SignInIcon />}>ログイン</Button>
           </form>
-          <LinkButton
-            href="https://liveblocks.io/docs/guides/nextjs-starter-kit"
-            target="_blank"
-            variant="secondary"
-          >
-            Learn more
-          </LinkButton>
-        </div>
-      </Container>
-      <Container className={styles.section}>
-        <h2 className={styles.sectionTitle}>Features</h2>
-        <div className={styles.featuresGrid}>
-          <Feature
-            description={
-              <>
-                A collaborative whiteboard app with included share menu,
-                documents listing, users, groups, permissions, and more.
-              </>
-            }
-            title="Liveblocks"
-          />
-          <Feature
-            description={
-              <>
-                Best practices followed, using a mixture of SSR and custom API
-                endpoints. Modify documents from both client and server.
-              </>
-            }
-            title="Next.js"
-          />
-          <Feature
-            description={
-              <>
-                Adjust our reusable interface & design system to fit your needs.
-              </>
-            }
-            title="User Interface"
-          />
-          <Feature
-            description={
-              <>
-                All custom client and server functions are fully typed, and easy
-                to update.
-              </>
-            }
-            title="TypeScript"
-          />
-          <Feature
-            description={
-              <>
-                Complete authentication, compatible with any NextAuth provider,
-                including GitHub, Google, Auth0, and many more.
-              </>
-            }
-            title="NextAuth.js"
-          />
-          <Feature
-            description={
-              <>
-                See data update live using the SWR (state-while-revalidate)
-                library.
-              </>
-            }
-            title="SWR"
-          />
         </div>
       </Container>
     </MarketingLayout>

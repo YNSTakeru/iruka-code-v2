@@ -1,8 +1,5 @@
 "use server";
 
-import { RoomAccesses } from "@liveblocks/node";
-import { nanoid } from "nanoid";
-import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { DOCUMENT_URL } from "@/constants";
 import { buildDocument, getDraftsGroupName } from "@/lib/utils";
@@ -14,6 +11,9 @@ import {
   DocumentType,
   DocumentUser,
 } from "@/types";
+import { RoomAccesses } from "@liveblocks/node";
+import { nanoid } from "nanoid";
+import { redirect } from "next/navigation";
 
 type Props = {
   name: Document["name"];
@@ -47,8 +47,8 @@ export async function createDocument(
     return {
       error: {
         code: 401,
-        message: "Not signed in",
-        suggestion: "Sign in to create a new document",
+        message: "ログインできません。",
+        suggestion: "ログインしてから新規コードを作成してください",
       },
     };
   }

@@ -1,9 +1,9 @@
 "use server";
 
-import { RoomUser } from "@liveblocks/node";
 import { auth } from "@/auth";
 import { liveblocks } from "@/liveblocks.server.config";
 import { Document } from "@/types";
+import { RoomUser } from "@liveblocks/node";
 
 type LiveUserList = { documentId: Document["id"]; users: RoomUser[] };
 
@@ -49,8 +49,8 @@ export async function getLiveUsers({ documentIds }: Props) {
     return {
       error: {
         code: 401,
-        message: "Not signed in",
-        suggestion: "Sign in to access active users",
+        message: "ログインできません。",
+        suggestion: "許可されたアカウントのみでログインしてください。",
       },
     };
   }

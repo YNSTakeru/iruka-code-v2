@@ -61,8 +61,8 @@ export async function updateGroupAccess({
     return {
       error: {
         code: 401,
-        message: "Not signed in",
-        suggestion: "Sign in to remove a user",
+        message: "ログインできません。",
+        suggestion: "ログインしてからアカウントを削除してください。",
       },
     };
   }

@@ -1,9 +1,9 @@
-import { ComponentProps, useState } from "react";
 import { PlusIcon } from "@/icons";
 import { createDocument } from "@/lib/actions";
 import { Button } from "@/primitives/Button";
 import { Popover } from "@/primitives/Popover";
 import { Document, DocumentGroup, DocumentType, DocumentUser } from "@/types";
+import { ComponentProps, useState } from "react";
 import styles from "./DocumentCreatePopover.module.css";
 
 interface Props extends Omit<ComponentProps<typeof Popover>, "content"> {
@@ -50,14 +50,14 @@ export function DocumentCreatePopover({
           <Button
             icon={<PlusIcon />}
             onClick={() => {
-              createNewDocument("Untitled", "text");
+              createNewDocument("名称未設定", "text");
             }}
             variant="subtle"
             disabled={disableButtons}
           >
-            Text
+            コード
           </Button>
-          <Button
+          {/* <Button
             icon={<PlusIcon />}
             onClick={() => {
               createNewDocument("Untitled", "whiteboard");
@@ -76,7 +76,7 @@ export function DocumentCreatePopover({
             variant="subtle"
           >
             Spreadsheet
-          </Button>
+          </Button> */}
         </div>
       }
       modal

@@ -54,8 +54,8 @@ export async function removeUserAccess({ userId, documentId }: Props) {
     return {
       error: {
         code: 401,
-        message: "Not signed in",
-        suggestion: "Sign in to remove a user",
+        message: "ログインできません。",
+        suggestion: "ログインしてからアカウントを削除してください。",
       },
     };
   }

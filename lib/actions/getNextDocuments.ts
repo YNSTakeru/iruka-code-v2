@@ -45,8 +45,8 @@ export async function getNextDocuments({ nextCursor }: Props) {
     return {
       error: {
         code: 401,
-        message: "Not signed in",
-        suggestion: "Sign in to get documents",
+        message: "ログインできません。",
+        suggestion: "ログインしてからコードにアクセスしてください。",
       },
     };
   }

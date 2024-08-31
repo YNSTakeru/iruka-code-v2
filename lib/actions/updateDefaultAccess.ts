@@ -47,8 +47,8 @@ export async function updateDefaultAccess({ documentId, access }: Props) {
     return {
       error: {
         code: 401,
-        message: "Not signed in",
-        suggestion: "Sign in to update public access level",
+        message: "ログインできません。",
+        suggestion: "ログインしてからアクセスレベルを上げてください。",
       },
     };
   }

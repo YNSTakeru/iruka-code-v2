@@ -1,15 +1,11 @@
-import clsx from "clsx";
-import { usePathname } from "next/navigation";
-import { ComponentProps, useMemo } from "react";
-import {
-  DASHBOARD_DRAFTS_URL,
-  DASHBOARD_GROUP_URL,
-  DASHBOARD_URL,
-} from "@/constants";
+import { DASHBOARD_GROUP_URL, DASHBOARD_URL } from "@/constants";
 import { FileIcon, FolderIcon } from "@/icons";
 import { LinkButton } from "@/primitives/Button";
 import { Group } from "@/types";
 import { normalizeTrailingSlash } from "@/utils";
+import clsx from "clsx";
+import { usePathname } from "next/navigation";
+import { ComponentProps, useMemo } from "react";
 import styles from "./DashboardSidebar.module.css";
 
 interface Props extends ComponentProps<"div"> {
@@ -55,11 +51,6 @@ export function DashboardSidebar({ className, groups, ...props }: Props) {
             <li>
               <SidebarLink href={DASHBOARD_URL} icon={<FileIcon />}>
                 All
-              </SidebarLink>
-            </li>
-            <li>
-              <SidebarLink href={DASHBOARD_DRAFTS_URL} icon={<FileIcon />}>
-                Drafts
               </SidebarLink>
             </li>
           </ul>

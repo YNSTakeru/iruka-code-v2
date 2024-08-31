@@ -1,11 +1,7 @@
-import clsx from "clsx";
-import { ComponentProps, FormEvent, useState } from "react";
-import { PlusIcon } from "@/icons";
 import { updateUserAccess } from "@/lib/actions";
-import { Button } from "@/primitives/Button";
-import { Input } from "@/primitives/Input";
-import { Spinner } from "@/primitives/Spinner";
 import { Document, DocumentAccess, DocumentUser } from "@/types";
+import clsx from "clsx";
+import { ComponentProps, useState } from "react";
 import styles from "./ShareDialogInvite.module.css";
 
 interface Props extends ComponentProps<"div"> {
@@ -49,30 +45,6 @@ export function ShareDialogInviteUser({
     <div className={clsx(className, styles.section)} {...props}>
       {fullAccess ? (
         <>
-          <form
-            className={styles.inviteForm}
-            onSubmit={(e: FormEvent<HTMLFormElement>) => {
-              e.preventDefault();
-              const id = new FormData(e.currentTarget).get("userId") as string;
-              handleAddDocumentUser(id);
-            }}
-          >
-            <Input
-              className={styles.inviteInput}
-              disabled={isInviteLoading}
-              name="userId"
-              placeholder="Email address"
-              required
-              type="email"
-            />
-            <Button
-              className={styles.inviteButton}
-              disabled={isInviteLoading}
-              icon={isInviteLoading ? <Spinner /> : <PlusIcon />}
-            >
-              Invite
-            </Button>
-          </form>
           {errorMessage && (
             <div className={clsx(styles.error, styles.inviteFormMessage)}>
               {errorMessage}

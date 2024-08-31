@@ -1,7 +1,3 @@
-import { ClientSideSuspense } from "@liveblocks/react";
-import clsx from "clsx";
-import Link from "next/link";
-import { ComponentProps } from "react";
 import { InboxPopover } from "@/components/Inbox";
 import { ShareIcon } from "@/icons";
 import { renameDocument } from "@/lib/actions";
@@ -9,11 +5,15 @@ import { useInitialDocument } from "@/lib/hooks";
 import { Button } from "@/primitives/Button";
 import { Skeleton } from "@/primitives/Skeleton";
 import { Document } from "@/types";
+import { ClientSideSuspense } from "@liveblocks/react";
+import clsx from "clsx";
+import Link from "next/link";
+import { ComponentProps } from "react";
 import { Logo } from "../Logo";
 import { ShareDialog } from "../ShareDialog";
+import styles from "./DocumentHeader.module.css";
 import { DocumentHeaderAvatars } from "./DocumentHeaderAvatars";
 import { DocumentHeaderName } from "./DocumentHeaderName";
-import styles from "./DocumentHeader.module.css";
 
 interface Props extends ComponentProps<"header"> {
   documentId: Document["id"];
@@ -51,12 +51,12 @@ export function DocumentHeader({ documentId, className, ...props }: Props) {
         <ClientSideSuspense
           fallback={
             <Button icon={<ShareIcon />} disabled={true}>
-              Share
+              共有
             </Button>
           }
         >
           <ShareDialog>
-            <Button icon={<ShareIcon />}>Share</Button>
+            <Button icon={<ShareIcon />}>共有</Button>
           </ShareDialog>
         </ClientSideSuspense>
 

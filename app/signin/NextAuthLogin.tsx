@@ -1,8 +1,8 @@
 "use client";
 
+import { Button } from "@/primitives/Button";
 import { signIn } from "next-auth/react";
 import { ComponentProps } from "react";
-import { Button } from "@/primitives/Button";
 import styles from "./signin.module.css";
 
 interface Props extends ComponentProps<"div"> {
@@ -18,7 +18,7 @@ export function NextAuthLogin({ providers }: Props) {
     <div className={styles.actions}>
       {Object.entries(providers).map(([id, name]) => (
         <Button key={name} onClick={() => signIn(id)}>
-          Sign in with {name}
+          {name}でログイン
         </Button>
       ))}
     </div>

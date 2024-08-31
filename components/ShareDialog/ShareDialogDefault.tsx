@@ -1,3 +1,10 @@
+import { CheckIcon, CopyIcon, EditIcon, LinkIcon } from "@/icons";
+import { updateDefaultAccess } from "@/lib/actions";
+import { Button } from "@/primitives/Button";
+import { Checkbox } from "@/primitives/Checkbox";
+import { Input } from "@/primitives/Input";
+import { Spinner } from "@/primitives/Spinner";
+import { Document, DocumentAccess } from "@/types";
 import clsx from "clsx";
 import {
   ComponentProps,
@@ -6,13 +13,6 @@ import {
   useRef,
   useState,
 } from "react";
-import { CheckIcon, CopyIcon, EditIcon, LinkIcon } from "@/icons";
-import { updateDefaultAccess } from "@/lib/actions";
-import { Button } from "@/primitives/Button";
-import { Checkbox } from "@/primitives/Checkbox";
-import { Input } from "@/primitives/Input";
-import { Spinner } from "@/primitives/Spinner";
-import { Document, DocumentAccess } from "@/types";
 import styles from "./ShareDialogDefault.module.css";
 
 interface Props extends ComponentProps<"div"> {
@@ -115,7 +115,7 @@ export function ShareDialogDefault({
           htmlFor="public-read-checkbox"
         >
           <LinkIcon className={styles.sectionLabelIcon} />
-          <span>Enable public share link</span>
+          <span>共有URLリンクを表示</span>
         </label>
         <div className={styles.sectionAction}>
           {isPublicReadLoading ? (
@@ -141,7 +141,7 @@ export function ShareDialogDefault({
               htmlFor="public-edit-checkbox"
             >
               <EditIcon className={styles.sectionLabelIcon} />
-              <span> Allow anyone to edit</span>
+              <span> 誰でも編集できるようにする</span>
             </label>
             <div className={styles.sectionAction}>
               {isPublicEditLoading ? (
@@ -169,7 +169,7 @@ export function ShareDialogDefault({
               icon={copiedToClipboard ? <CheckIcon /> : <CopyIcon />}
               onClick={handleCopyToClipboard}
             >
-              Copy
+              コピー
             </Button>
           </div>
         </>
