@@ -1,5 +1,8 @@
 "use client";
 
+import { DocumentSpinner } from "@/primitives/Spinner";
+import { javascript } from "@codemirror/lang-javascript";
+import { EditorState } from "@codemirror/state";
 import { ClientSideSuspense } from "@liveblocks/react";
 import { useRoom, useSelf } from "@liveblocks/react/suspense";
 import { LiveblocksYjsProvider } from "@liveblocks/yjs";
@@ -14,18 +17,16 @@ import TaskList from "@tiptap/extension-task-list";
 import { TextAlign } from "@tiptap/extension-text-align";
 import { Typography } from "@tiptap/extension-typography";
 import Youtube from "@tiptap/extension-youtube";
-import { EditorContent, useEditor } from "@tiptap/react";
+import { useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { EditorView } from "prosemirror-view";
-import { useEffect, useState } from "react";
+import { EditorView, basicSetup } from "codemirror";
+import { useCallback, useEffect, useState } from "react";
+import { yCollab } from "y-codemirror.next";
 import * as Y from "yjs";
-import { DocumentSpinner } from "@/primitives/Spinner";
+import { Toolbar as CodeMirrorToolbar } from "./CodeEditorToolbar";
 import { LiveblocksCommentsHighlight } from "./comment-highlight";
 import { CustomTaskItem } from "./CustomTaskItem";
 import { SelectionMenu } from "./SelectionMenu";
-import { ThreadList } from "./ThreadList";
-import { Toolbar } from "./Toolbar";
-import { WordCount } from "./WordCount";
 import styles from "./TextEditor.module.css";
 
 export function TextEditor() {
@@ -59,15 +60,16 @@ export function Editor() {
     return null;
   }
 
-  return <TiptapEditor doc={doc} provider={provider} />;
+  return <TiptapEditor doc={doc} provider={provider} room={room} />;
 }
 
 type EditorProps = {
   doc: Y.Doc;
   provider: any;
+  room: any;
 };
 
-function TiptapEditor({ doc, provider }: EditorProps) {
+function TiptapEditor({ doc, provider, room }: EditorProps) {
   // Get user info from Liveblocks authentication endpoint
   const { name, color, avatar: picture } = useSelf((me) => me.info);
 
@@ -191,29 +193,81 @@ function TiptapEditor({ doc, provider }: EditorProps) {
 
   return (
     <div className={styles.container}>
-      {canWrite ? (
-        <div className={styles.editorHeader}>
-          {editor ? <Toolbar editor={editor} /> : null}
-        </div>
-      ) : null}
       <div className={styles.editorPanel}>
         {editor ? <SelectionMenu editor={editor} /> : null}
         <div className={styles.editorContainerOffset}>
           <div className={styles.editorContainer}>
-            <EditorContent editor={editor} />
-            <div className={styles.threadListContainer} data-threads="desktop">
-              {editor ? <ThreadList editor={editor} /> : null}
-            </div>
-          </div>
-          <div
-            className={styles.mobileThreadListContainer}
-            data-threads="mobile"
-          >
-            {editor ? <ThreadList editor={editor} /> : null}
+            <CollaborativeEditor room={room} />
           </div>
         </div>
       </div>
-      {editor ? <WordCount editor={editor} /> : null}
+    </div>
+  );
+}
+
+function CollaborativeEditor({ room }: { room: any }) {
+  const [element, setElement] = useState<HTMLElement>();
+  const [yUndoManager, setYUndoManager] = useState<Y.UndoManager>();
+
+  const userInfo = useSelf((me) => me.info);
+
+  const ref = useCallback((node: HTMLElement | null) => {
+    if (!node) return;
+    setElement(node);
+  });
+
+  useEffect(() => {
+    let provider: LiveblocksYjsProvider;
+    let ydoc: Y.Doc;
+    let view: EditorView;
+
+    if (!element || !room || !userInfo) {
+      return;
+    }
+
+    ydoc = new Y.Doc();
+    provider = new LiveblocksYjsProvider(room as any, ydoc);
+    const ytext = ydoc.getText("codemirror");
+    const undoManager = new Y.UndoManager(ytext);
+    setYUndoManager(undoManager);
+
+    provider.awareness.setLocalStateField("user", {
+      name: userInfo.name,
+      color: userInfo.color,
+      colorLight: userInfo.color + "80",
+    });
+
+    const state = EditorState.create({
+      doc: ytext.toString(),
+      extensions: [
+        basicSetup,
+        javascript(),
+        yCollab(ytext, provider.awareness, { undoManager }),
+      ],
+    });
+
+    view = new EditorView({
+      state,
+      parent: element,
+    });
+
+    return () => {
+      ydoc?.destroy();
+      provider?.destroy();
+      view?.destroy();
+    };
+  }, [element, room, userInfo]);
+
+  return (
+    <div className={styles.editor__container}>
+      <div className={styles.editor__editorHeader}>
+        <div>
+          {yUndoManager ? (
+            <CodeMirrorToolbar yUndoManager={yUndoManager} />
+          ) : null}
+        </div>
+        <div className={styles.editor__editorContainer} ref={ref}></div>
+      </div>
     </div>
   );
 }

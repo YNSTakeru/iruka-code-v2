@@ -1,4 +1,3 @@
-import { Editor } from "@tiptap/react";
 import {
   BlockquoteIcon,
   CheckboxIcon,
@@ -6,6 +5,7 @@ import {
   ListUnorderedIcon,
 } from "@/icons";
 import { Button } from "@/primitives/Button";
+import { Editor } from "@tiptap/react";
 import styles from "./Toolbar.module.css";
 
 type Props = {
