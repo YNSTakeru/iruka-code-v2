@@ -2,7 +2,7 @@ import { getProviders } from "@/auth";
 import { Liveblocks } from "@liveblocks/node";
 
 // Your Liveblocks secret key
-export const SECRET_API_KEY = process.env.NEXT_PUBLIC_LIVEBLOCKS_SECRET_KEY;
+export const SECRET_API_KEY = process.env.LIVEBLOCKS_SECRET_KEY;
 
 export const liveblocks = new Liveblocks({ secret: SECRET_API_KEY as string });
 
