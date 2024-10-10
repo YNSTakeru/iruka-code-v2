@@ -2,27 +2,17 @@
 
 import Axios from "axios";
 import { signIn } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./signin.module.css";
 
 const axios = Axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL: "process.env.NEXT_PUBLIC_API_URL",
   withCredentials: true,
 });
 
 export function DemoLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  useEffect(() => {
-    try {
-      fetch(`${process.env.NEXT_PUBLIC_API_URL}/`).then((res) => {
-        console.log(res);
-      });
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  }, []);
 
   async function valiDateSignIn() {
     try {
