@@ -5,21 +5,22 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import styles from "./signin.module.css";
 
-const axios = Axios.create({
-  baseURL: "process.env.NEXT_PUBLIC_API_URL",
-  withCredentials: true,
-});
-
 export function DemoLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   async function valiDateSignIn() {
     try {
-      const response = await axios.post("/api/login", {
-        email,
-        password,
-      });
+      const response = await Axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/login`,
+        {
+          email,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
 
       if (response.status === 200) {
         signIn("credentials", { email });
