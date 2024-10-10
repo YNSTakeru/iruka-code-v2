@@ -31,7 +31,7 @@ export function DemoLogin() {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    const data: any = await valiDateSignIn();
+    await valiDateSignIn();
   };
 
   return (

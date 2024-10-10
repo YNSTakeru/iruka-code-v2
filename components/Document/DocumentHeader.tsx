@@ -5,14 +5,20 @@ import { useInitialDocument } from "@/lib/hooks";
 import { Button } from "@/primitives/Button";
 import { Skeleton } from "@/primitives/Skeleton";
 import { Document } from "@/types";
+// eslint-disable-next-line import/order
 import { ClientSideSuspense } from "@liveblocks/react";
+// eslint-disable-next-line import/order
 import clsx from "clsx";
+// eslint-disable-next-line import/order
 import Link from "next/link";
+// eslint-disable-next-line import/order
 import { ComponentProps } from "react";
 import { Logo } from "../Logo";
 import { ShareDialog } from "../ShareDialog";
 import styles from "./DocumentHeader.module.css";
+// eslint-disable-next-line import/order
 import { DocumentHeaderAvatars } from "./DocumentHeaderAvatars";
+// eslint-disable-next-line import/order
 import { DocumentHeaderName } from "./DocumentHeaderName";
 
 interface Props extends ComponentProps<"header"> {

@@ -1,4 +1,5 @@
 import { MutableRefObject, useEffect } from "react";
+// eslint-disable-next-line import/order
 import { useOthers, useUpdateMyPresence } from "@liveblocks/react/suspense";
 import { Cursor } from "./Cursor";
 

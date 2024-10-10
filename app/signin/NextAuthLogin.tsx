@@ -1,5 +1,6 @@
 "use client";
 
+// eslint-disable-next-line import/order
 import { Button } from "@/primitives/Button";
 import { signIn } from "next-auth/react";
 import { ComponentProps } from "react";

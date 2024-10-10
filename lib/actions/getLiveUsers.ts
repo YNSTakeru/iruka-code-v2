@@ -3,6 +3,7 @@
 import { auth } from "@/auth";
 import { liveblocks } from "@/liveblocks.server.config";
 import { Document } from "@/types";
+// eslint-disable-next-line import/order
 import { RoomUser } from "@liveblocks/node";
 
 type LiveUserList = { documentId: Document["id"]; users: RoomUser[] };

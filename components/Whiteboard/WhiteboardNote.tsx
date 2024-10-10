@@ -1,4 +1,7 @@
+import { CrossIcon } from "@/icons";
+// eslint-disable-next-line import/order
 import clsx from "clsx";
+// eslint-disable-next-line import/order
 import {
   ChangeEventHandler,
   ComponentProps,
@@ -9,10 +12,11 @@ import {
   useCallback,
   useRef,
 } from "react";
-import { CrossIcon } from "@/icons";
-import { useStorage } from "@liveblocks/react/suspense";
+// eslint-disable-next-line import/order
 import { Avatar } from "@/primitives/Avatar";
 import { Button } from "@/primitives/Button";
+// eslint-disable-next-line import/order
+import { useStorage } from "@liveblocks/react/suspense";
 import styles from "./WhiteboardNote.module.css";
 
 interface Props

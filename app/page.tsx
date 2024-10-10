@@ -4,24 +4,9 @@ import { SignInIcon } from "@/icons";
 import { MarketingLayout } from "@/layouts/Marketing";
 import { Button } from "@/primitives/Button";
 import { Container } from "@/primitives/Container";
-import clsx from "clsx";
+// eslint-disable-next-line import/order
 import { redirect } from "next/navigation";
-import { ComponentProps, ReactNode } from "react";
 import styles from "./page.module.css";
-
-interface FeatureProps extends Omit<ComponentProps<"div">, "title"> {
-  description: ReactNode;
-  title: ReactNode;
-}
-
-function Feature({ title, description, className, ...props }: FeatureProps) {
-  return (
-    <div className={clsx(className, styles.featuresFeature)} {...props}>
-      <h4 className={styles.featuresFeatureTitle}>{title}</h4>
-      <p className={styles.featuresFeatureDescription}>{description}</p>
-    </div>
-  );
-}
 
 export default async function Index() {
   const session = await auth();

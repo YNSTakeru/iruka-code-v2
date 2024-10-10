@@ -5,6 +5,7 @@ import {
   ListUnorderedIcon,
 } from "@/icons";
 import { Button } from "@/primitives/Button";
+// eslint-disable-next-line import/order
 import { Editor } from "@tiptap/react";
 import styles from "./Toolbar.module.css";
 

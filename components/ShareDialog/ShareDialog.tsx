@@ -1,12 +1,18 @@
+// eslint-disable-next-line import/order
 import { UserIcon, UsersIcon } from "@/icons";
+// eslint-disable-next-line import/order
 import {
   getDocument,
   getDocumentGroups,
   getDocumentUsers,
 } from "@/lib/actions";
+// eslint-disable-next-line import/order
 import { useDocumentsFunctionSWR, useInitialDocument } from "@/lib/hooks";
+// eslint-disable-next-line import/order
 import { getDocumentAccess } from "@/lib/utils";
+// eslint-disable-next-line import/order
 import { Dialog } from "@/primitives/Dialog";
+// eslint-disable-next-line import/order
 import { DocumentAccess } from "@/types";
 import {
   useBroadcastEvent,
@@ -15,6 +21,7 @@ import {
 import * as Tabs from "@radix-ui/react-tabs";
 import { useSession } from "next-auth/react";
 import { ComponentProps, useCallback, useEffect, useState } from "react";
+// eslint-disable-next-line import/order
 import styles from "./ShareDialog.module.css";
 import { ShareDialogDefault } from "./ShareDialogDefault";
 import { ShareDialogGroups } from "./ShareDialogGroups";

@@ -6,7 +6,7 @@ interface User {
   email: string;
 }
 
-export const getUser = async (email: string): Promise<User | null> => {
+export const getUser = async (_email: string): Promise<User | null> => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   try {
     const response = await axios.get(`${apiUrl}/users`);

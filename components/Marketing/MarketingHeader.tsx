@@ -2,8 +2,11 @@ import { signIn } from "@/auth";
 import { SignInIcon } from "@/icons";
 import { Button } from "@/primitives/Button";
 import { Container } from "@/primitives/Container";
+// eslint-disable-next-line import/order
 import clsx from "clsx";
+// eslint-disable-next-line import/order
 import Link from "next/link";
+// eslint-disable-next-line import/order
 import { ComponentProps } from "react";
 import { Logo } from "../Logo";
 import styles from "./MarketingHeader.module.css";

@@ -2,7 +2,9 @@ import { removeUserAccess, updateUserAccess } from "@/lib/actions";
 import { Avatar } from "@/primitives/Avatar";
 import { Select } from "@/primitives/Select";
 import { Document, DocumentAccess, DocumentUser } from "@/types";
+// eslint-disable-next-line import/order
 import clsx from "clsx";
+// eslint-disable-next-line import/order
 import { ComponentProps } from "react";
 import styles from "./ShareDialogRows.module.css";
 

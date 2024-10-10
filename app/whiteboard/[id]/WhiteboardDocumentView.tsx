@@ -1,15 +1,20 @@
 "use client";
 
-import { LiveMap } from "@liveblocks/client";
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
 import { DocumentHeader, DocumentHeaderSkeleton } from "@/components/Document";
 import { Whiteboard } from "@/components/Whiteboard";
 import { DocumentLayout } from "@/layouts/Document";
 import { ErrorLayout } from "@/layouts/Error";
 import { InitialDocumentProvider } from "@/lib/hooks";
-import { RoomProvider } from "@liveblocks/react/suspense";
+// eslint-disable-next-line import/order
+import { LiveMap } from "@liveblocks/client";
+// eslint-disable-next-line import/order
+import { useParams } from "next/navigation";
+// eslint-disable-next-line import/order
+import { useEffect, useState } from "react";
+// eslint-disable-next-line import/order
 import { Document, ErrorData } from "@/types";
+// eslint-disable-next-line import/order
+import { RoomProvider } from "@liveblocks/react/suspense";
 
 type Props = {
   initialDocument: Document | null;

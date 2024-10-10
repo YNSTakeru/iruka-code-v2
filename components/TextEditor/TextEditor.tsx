@@ -1,5 +1,6 @@
 "use client";
 
+// eslint-disable-next-line import/order
 import { DocumentSpinner } from "@/primitives/Spinner";
 import { javascript } from "@codemirror/lang-javascript";
 import { EditorState } from "@codemirror/state";
@@ -214,19 +215,18 @@ function CollaborativeEditor({ room }: { room: any }) {
   const ref = useCallback((node: HTMLElement | null) => {
     if (!node) return;
     setElement(node);
-  });
+  }, []);
 
   useEffect(() => {
-    let provider: LiveblocksYjsProvider;
-    let ydoc: Y.Doc;
-    let view: EditorView;
-
     if (!element || !room || !userInfo) {
       return;
     }
 
-    ydoc = new Y.Doc();
-    provider = new LiveblocksYjsProvider(room as any, ydoc);
+    const ydoc: Y.Doc = new Y.Doc();
+    const provider: LiveblocksYjsProvider = new LiveblocksYjsProvider(
+      room as any,
+      ydoc
+    );
     const ytext = ydoc.getText("codemirror");
     const undoManager = new Y.UndoManager(ytext);
     setYUndoManager(undoManager);
@@ -246,7 +246,7 @@ function CollaborativeEditor({ room }: { room: any }) {
       ],
     });
 
-    view = new EditorView({
+    const view: EditorView = new EditorView({
       state,
       parent: element,
     });
@@ -273,6 +273,7 @@ function CollaborativeEditor({ room }: { room: any }) {
 }
 
 // Prevents a matchesNode error on hot reloading
+// @ts-ignore
 EditorView.prototype.updateState = function updateState(state) {
   // @ts-ignore
   if (!this.docView) return;

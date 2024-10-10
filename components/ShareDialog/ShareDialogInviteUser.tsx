@@ -1,6 +1,8 @@
-import { updateUserAccess } from "@/lib/actions";
-import { Document, DocumentAccess, DocumentUser } from "@/types";
+// eslint-disable-next-line import/order
+import { Document } from "@/types";
+// eslint-disable-next-line import/order
 import clsx from "clsx";
+// eslint-disable-next-line import/order
 import { ComponentProps, useState } from "react";
 import styles from "./ShareDialogInvite.module.css";
 
@@ -11,35 +13,16 @@ interface Props extends ComponentProps<"div"> {
 }
 
 export function ShareDialogInviteUser({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   documentId,
   fullAccess,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onSetUsers,
   className,
   ...props
 }: Props) {
-  const [isInviteLoading, setInviteLoading] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [errorMessage, setErrorMessage] = useState<string>();
-
-  // Add a user to the room using email as user id
-  async function handleAddDocumentUser(id: DocumentUser["id"]) {
-    setErrorMessage(undefined);
-    setInviteLoading(true);
-
-    const { error } = await updateUserAccess({
-      userId: id,
-      documentId: documentId,
-      access: DocumentAccess.READONLY,
-    });
-
-    setInviteLoading(false);
-
-    if (error) {
-      setErrorMessage(error?.suggestion);
-      return;
-    }
-
-    onSetUsers();
-  }
 
   return (
     <div className={clsx(className, styles.section)} {...props}>

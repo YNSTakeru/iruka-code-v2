@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+// eslint-disable-next-line import/order
 import { useOthers, useSelf } from "@liveblocks/react/suspense";
 import { AvatarStack } from "../../primitives/AvatarStack";
 

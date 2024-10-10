@@ -1,5 +1,6 @@
 import { auth, getProviders } from "@/auth";
 import { DASHBOARD_URL } from "@/constants";
+// eslint-disable-next-line import/order
 import { redirect } from "next/navigation";
 import { DemoLogin } from "./DemoLogin";
 import { NextAuthLogin } from "./NextAuthLogin";

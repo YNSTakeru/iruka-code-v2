@@ -5,7 +5,9 @@ import { Checkbox } from "@/primitives/Checkbox";
 import { Input } from "@/primitives/Input";
 import { Spinner } from "@/primitives/Spinner";
 import { Document, DocumentAccess } from "@/types";
+// eslint-disable-next-line import/order
 import clsx from "clsx";
+// eslint-disable-next-line import/order
 import {
   ComponentProps,
   useCallback,

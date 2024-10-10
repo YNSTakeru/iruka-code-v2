@@ -3,8 +3,11 @@ import { FileIcon, FolderIcon } from "@/icons";
 import { LinkButton } from "@/primitives/Button";
 import { Group } from "@/types";
 import { normalizeTrailingSlash } from "@/utils";
+// eslint-disable-next-line import/order
 import clsx from "clsx";
+// eslint-disable-next-line import/order
 import { usePathname } from "next/navigation";
+// eslint-disable-next-line import/order
 import { ComponentProps, useMemo } from "react";
 import styles from "./DashboardSidebar.module.css";
 
