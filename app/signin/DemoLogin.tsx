@@ -37,6 +37,7 @@ export function DemoLogin() {
 
   return (
     <div className={styles.actions}>
+      {process.env.NEXT_PUBLIC_API_URL}
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">メールアドレス:</label>
