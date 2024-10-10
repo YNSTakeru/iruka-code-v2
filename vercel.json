@@ -6,13 +6,10 @@
       "use": "@vercel/next"
     }
   ],
-  "env": {
-    "API_URL": "@NEXT_PUBLIC_API_URL"
-  },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "${API_URL}/$1",
+      "dest": "${NEXT_PUBLIC_API_URL}/$1",
       "methods": ["POST"],
       "headers": {
         "Access-Control-Allow-Credentials": "true",
