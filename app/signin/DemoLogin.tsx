@@ -15,9 +15,13 @@ export function DemoLogin() {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/`).then((res) => {
-      console.log(res);
-    });
+    try {
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/`).then((res) => {
+        console.log(res);
+      });
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   }, []);
 
   async function valiDateSignIn() {
