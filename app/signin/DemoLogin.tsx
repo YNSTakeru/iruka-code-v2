@@ -2,7 +2,7 @@
 
 import Axios from "axios";
 import { signIn } from "next-auth/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./signin.module.css";
 
 const axios = Axios.create({
@@ -13,6 +13,12 @@ const axios = Axios.create({
 export function DemoLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/`).then((res) => {
+      console.log(res);
+    });
+  }, []);
 
   async function valiDateSignIn() {
     try {
