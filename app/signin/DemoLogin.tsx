@@ -1,7 +1,5 @@
 "use client";
 
-import Axios from "axios";
-import { signIn } from "next-auth/react";
 import { useState } from "react";
 import styles from "./signin.module.css";
 
@@ -10,24 +8,28 @@ export function DemoLogin() {
   const [password, setPassword] = useState("");
 
   async function valiDateSignIn() {
-    try {
-      const response = await Axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/login`,
-        {
-          email,
-          password,
-        },
-        {
-          withCredentials: true,
-        }
-      );
+    // try {
+    //   const response = await Axios.post(
+    //     `${process.env.NEXT_PUBLIC_API_URL}/api/login`,
+    //     {
+    //       email,
+    //       password,
+    //     },
+    //     {
+    //       withCredentials: true,
+    //     }
+    //   );
 
-      if (response.status === 200) {
-        signIn("credentials", { email });
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+    //   if (response.status === 200) {
+    //     signIn("credentials", { email });
+    //   }
+    // } catch (error) {
+    //   console.error("Error fetching data:", error);
+    // }
+
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+
+    console.log(res);
   }
 
   const handleSubmit = async (event: React.FormEvent) => {
