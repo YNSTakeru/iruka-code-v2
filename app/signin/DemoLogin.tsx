@@ -1,6 +1,7 @@
 "use client";
 
 import Axios from "axios";
+import { signIn } from "next-auth/react";
 import { useState } from "react";
 import styles from "./signin.module.css";
 
@@ -22,8 +23,7 @@ export function DemoLogin() {
       );
 
       if (response.status === 200) {
-        // signIn("credentials", { email });
-        console.log("Sign in successful");
+        signIn("credentials", { email });
       }
     } catch (error) {
       console.error("Error fetching data:", error);

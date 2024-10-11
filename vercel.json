@@ -13,11 +13,11 @@
     {
       "src": "/api/(.*)",
       "dest": "http://54.196.86.187/public/api/$1",
-      "methods": ["GET", "POST"],
+      "methods": ["POST"],
       "headers": {
         "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type, Authorization"
       }
     }
