@@ -1,7 +1,6 @@
 "use client";
 
 import Axios from "axios";
-import { signIn } from "next-auth/react";
 import { useState } from "react";
 import styles from "./signin.module.css";
 
@@ -12,7 +11,7 @@ export function DemoLogin() {
   async function valiDateSignIn() {
     try {
       const response = await Axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/login`,
+        `/api/login`,
         {
           email,
           password,
@@ -23,7 +22,8 @@ export function DemoLogin() {
       );
 
       if (response.status === 200) {
-        signIn("credentials", { email });
+        // signIn("credentials", { email });
+        console.log("Success");
       }
     } catch (error) {
       console.error("Error fetching data:", error);
