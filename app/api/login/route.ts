@@ -4,7 +4,7 @@ import { NextRequest } from "next/server";
 export async function POST(req: NextRequest) {
   const { email, password } = await req.json();
 
-  const test = true;
+  const test = false;
 
   if (!email || !password) {
     const errorMessages = [];
