@@ -11,7 +11,7 @@ export function DemoLogin() {
   async function valiDateSignIn() {
     try {
       const response = await Axios.post(
-        `/api/login`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/login`,
         {
           email,
           password,
@@ -23,7 +23,7 @@ export function DemoLogin() {
 
       if (response.status === 200) {
         // signIn("credentials", { email });
-        console.log("Success");
+        console.log("Sign in successful");
       }
     } catch (error) {
       console.error("Error fetching data:", error);
