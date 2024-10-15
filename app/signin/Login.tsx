@@ -7,6 +7,7 @@ import styles from "./signin.module.css";
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   async function valiDateSignIn() {
     const url = `${process.env.NEXT_PUBLIC_ROUTE_API_URL}/api/login`;
@@ -18,6 +19,12 @@ export function Login() {
       },
       body: JSON.stringify({ email, password }),
     });
+
+    if (!response.ok) {
+      setError(
+        "ログインに失敗しました。\n正しいメールアドレスまたは、パスワードを入力してください。"
+      );
+    }
 
     if (response.status === 400) {
       const data = await response.text();
@@ -78,6 +85,7 @@ export function Login() {
             required
           />
         </div>
+        {error && <p className={styles.error}>{error}</p>}
         <button className={styles.button} type="submit">
           ログイン
         </button>
