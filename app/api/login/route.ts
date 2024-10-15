@@ -4,8 +4,6 @@ import { NextRequest } from "next/server";
 export async function POST(req: NextRequest) {
   const { email, password } = await req.json();
 
-  const test = false;
-
   if (!email || !password) {
     const errorMessages = [];
     if (!email) {
@@ -21,10 +19,6 @@ export async function POST(req: NextRequest) {
   const data = {
     user: { email, password },
   };
-
-  if (test) {
-    return new Response("ログインしました", { status: 200 });
-  }
 
   try {
     const response = await axios.post(

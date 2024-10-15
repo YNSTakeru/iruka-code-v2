@@ -4,7 +4,7 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import styles from "./signin.module.css";
 
-export function DemoLogin() {
+export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -51,10 +51,13 @@ export function DemoLogin() {
 
   return (
     <div className={styles.actions}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <div>
-          <label htmlFor="email">メールアドレス:</label>
+          <label className={styles.label} htmlFor="email">
+            メールアドレス:
+          </label>
           <input
+            className={styles.input}
             type="email"
             id="email"
             required
@@ -63,8 +66,11 @@ export function DemoLogin() {
           />
         </div>
         <div>
-          <label htmlFor="password">パスワード:</label>
+          <label className={styles.label} htmlFor="password">
+            パスワード:
+          </label>
           <input
+            className={styles.input}
             type="password"
             id="password"
             value={password}
@@ -72,7 +78,9 @@ export function DemoLogin() {
             required
           />
         </div>
-        <button type="submit">ログイン</button>
+        <button className={styles.button} type="submit">
+          ログイン
+        </button>
       </form>
     </div>
   );

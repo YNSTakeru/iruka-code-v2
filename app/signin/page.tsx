@@ -2,7 +2,7 @@ import { auth, getProviders } from "@/auth";
 import { DASHBOARD_URL } from "@/constants";
 // eslint-disable-next-line import/order
 import { redirect } from "next/navigation";
-import { DemoLogin } from "./DemoLogin";
+import { Login } from "./Login";
 import { NextAuthLogin } from "./NextAuthLogin";
 import styles from "./signin.module.css";
 
@@ -20,12 +20,11 @@ export default async function SignInPage() {
       <main className={styles.main}>
         <h2 className={styles.title}>あなたのアカウントでログイン</h2>
         {providers && providers.credentials ? (
-          <DemoLogin />
+          <Login />
         ) : (
           <NextAuthLogin providers={providers} />
         )}
       </main>
-      <aside className={styles.aside} />
     </div>
   );
 }
