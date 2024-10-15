@@ -38,6 +38,18 @@
 
 ## ER図
 
+```mermaid
+erDiagram
+    Users {
+        int id PK
+        string name
+        string email
+        string password
+        datetime created_at
+        datetime updated_at
+    }
+```
+
 ## インフラ構成図
 
 ## 機能一覧
