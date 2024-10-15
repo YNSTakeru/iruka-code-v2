@@ -13,13 +13,13 @@
 
 ## 画面キャプチャ
 ### トップページ
-[トップページ](./assets/top.png)
+![トップページ](./assets/top.png)
 ### ログイン画面
-[ログイン画面](./assets/login.png)
+![ログイン画面](./assets/login.png)
 ### ダッシュボード
-[ダッシュボード](./assets/dashboard.png)
+![ダッシュボード](./assets/dashboard.png)
 ### コーディング共有画面
-[コーディング共有画面](./assets/main.png)
+![コーディング共有画面](./assets/main.png)
 
 ## 使用技術
 - フロント
@@ -40,7 +40,7 @@
 
 ```mermaid
 erDiagram
-    Users {
+    USER {
         int id PK
         string name
         string email
@@ -48,9 +48,25 @@ erDiagram
         datetime created_at
         datetime updated_at
     }
+
+    ROOM {
+        int id PK
+        string name
+        datetime created_at
+        datetime updated_at
+    }
+
+    USER_ROOMS {
+        int user_id FK
+        int room_id FK
+        datetime joined_at
+    }
+    USER ||--o{ USER_ROOMS: "has"
+    ROOM ||--o{ USER_ROOMS: "has"
 ```
 
 ## インフラ構成図
+![インフラ画像](./assets/iruka-code_infra.jpg)
 
 ## 機能一覧
 - ログイン機能
