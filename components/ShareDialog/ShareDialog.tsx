@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/order
-import { UserIcon, UsersIcon } from "@/icons";
+import { UserIcon } from "@/icons";
 // eslint-disable-next-line import/order
 import {
   getDocument,
@@ -24,8 +24,6 @@ import { ComponentProps, useCallback, useEffect, useState } from "react";
 // eslint-disable-next-line import/order
 import styles from "./ShareDialog.module.css";
 import { ShareDialogDefault } from "./ShareDialogDefault";
-import { ShareDialogGroups } from "./ShareDialogGroups";
-import { ShareDialogInviteGroup } from "./ShareDialogInviteGroup";
 import { ShareDialogInviteUser } from "./ShareDialogInviteUser";
 import { ShareDialogUsers } from "./ShareDialogUsers";
 
@@ -139,13 +137,7 @@ export function ShareDialog({ children, ...props }: Props) {
               <Tabs.Trigger className={styles.dialogTab} value="users">
                 <span className={styles.dialogTabLabel}>
                   <UserIcon className={styles.dialogTabIcon} />
-                  <span>Users</span>
-                </span>
-              </Tabs.Trigger>
-              <Tabs.Trigger className={styles.dialogTab} value="groups">
-                <span className={styles.dialogTabLabel}>
-                  <UsersIcon className={styles.dialogTabIcon} />
-                  <span>Groups</span>
+                  <span>ユーザー情報</span>
                 </span>
               </Tabs.Trigger>
             </Tabs.List>
@@ -170,30 +162,6 @@ export function ShareDialog({ children, ...props }: Props) {
                     broadcast({ type: "SHARE_DIALOG_UPDATE" });
                   }}
                   users={users}
-                />
-              ) : null}
-            </Tabs.Content>
-            <Tabs.Content value="groups" className={styles.dialogTabContent}>
-              <ShareDialogInviteGroup
-                className={styles.dialogSection}
-                documentId={documentId}
-                fullAccess={currentUserAccess === DocumentAccess.FULL}
-                currentGroups={groups || []}
-                onSetGroups={() => {
-                  revalidateAll();
-                  broadcast({ type: "SHARE_DIALOG_UPDATE" });
-                }}
-              />
-              {groups?.length ? (
-                <ShareDialogGroups
-                  className={styles.dialogSection}
-                  documentId={documentId}
-                  fullAccess={currentUserAccess === DocumentAccess.FULL}
-                  groups={groups}
-                  onSetGroups={() => {
-                    revalidateAll();
-                    broadcast({ type: "SHARE_DIALOG_UPDATE" });
-                  }}
                 />
               ) : null}
             </Tabs.Content>
