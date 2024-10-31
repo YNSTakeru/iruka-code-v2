@@ -32,8 +32,7 @@ export function DocumentHeaderName({
   }, []);
 
   const handleRenamingCancel = useCallback(() => {
-    setDraftName(initialDocument.name);
-    setRenaming(false);
+    handleRenamingSave();
   }, [initialDocument]);
 
   const handleRenamingSave = useCallback(() => {
