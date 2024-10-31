@@ -1,3 +1,6 @@
+import { EditIcon } from "@/icons";
+import { useInitialDocument } from "@/lib/hooks/useInitialDocument";
+import { Tooltip } from "@/primitives/Tooltip";
 import { useSelf } from "@liveblocks/react/suspense";
 import clsx from "clsx";
 import {
@@ -7,9 +10,6 @@ import {
   useCallback,
   useState,
 } from "react";
-import { EditIcon } from "@/icons";
-import { useInitialDocument } from "@/lib/hooks/useInitialDocument";
-import { Tooltip } from "@/primitives/Tooltip";
 import styles from "./DocumentHeaderName.module.css";
 
 interface Props extends ComponentProps<"div"> {
@@ -25,6 +25,7 @@ export function DocumentHeaderName({
   const isReadOnly = useSelf((me) => !me.canWrite);
   const [draftName, setDraftName] = useState(initialDocument.name);
   const [isRenaming, setRenaming] = useState(false);
+  const [isComposing, setIsComposing] = useState(false);
 
   const handleRenamingStart = useCallback(() => {
     setRenaming(true);
@@ -49,14 +50,24 @@ export function DocumentHeaderName({
 
   const handleNameKeyDown = useCallback(
     (event: KeyboardEvent<HTMLInputElement>) => {
+      if (isComposing) return;
+
       if (event.key === "Enter") {
         handleRenamingSave();
       } else if (event.key === "Escape") {
         handleRenamingCancel();
       }
     },
-    [handleRenamingCancel, handleRenamingSave]
+    [isComposing, handleRenamingCancel, handleRenamingSave]
   );
+
+  const handleCompositionStart = () => {
+    setIsComposing(true);
+  };
+
+  const handleCompositionEnd = () => {
+    setIsComposing(false);
+  };
 
   return (
     <div className={clsx(className, styles.container)} {...props}>
@@ -72,6 +83,8 @@ export function DocumentHeaderName({
           onBlur={handleRenamingCancel}
           onChange={handleNameChange}
           onKeyDown={handleNameKeyDown}
+          onCompositionStart={handleCompositionStart}
+          onCompositionEnd={handleCompositionEnd}
           value={draftName}
         />
       ) : (
