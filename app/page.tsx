@@ -1,10 +1,9 @@
-import { auth, signIn } from "@/auth";
+import { auth } from "@/auth";
 import { DASHBOARD_URL } from "@/constants";
-import { SignInIcon } from "@/icons";
 import { MarketingLayout } from "@/layouts/Marketing";
-import { Button } from "@/primitives/Button";
 import { Container } from "@/primitives/Container";
 // eslint-disable-next-line import/order
+import FreeLogin from "@/components/FreeLogin";
 import { redirect } from "next/navigation";
 import styles from "./page.module.css";
 
@@ -15,6 +14,10 @@ export default async function Index() {
   if (session) {
     redirect(DASHBOARD_URL);
   }
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
 
   return (
     <MarketingLayout>
@@ -27,14 +30,7 @@ export default async function Index() {
           </p>
         </div>
         <div className={styles.heroActions}>
-          <form
-            action={async () => {
-              "use server";
-              await signIn();
-            }}
-          >
-            <Button icon={<SignInIcon />}>ログイン</Button>
-          </form>
+          <FreeLogin />
         </div>
       </Container>
     </MarketingLayout>

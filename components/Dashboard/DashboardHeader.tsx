@@ -1,11 +1,11 @@
-import clsx from "clsx";
-import Link from "next/link";
-import { signOut, useSession } from "next-auth/react";
-import { ComponentProps, MouseEventHandler } from "react";
 import { CrossIcon, MenuIcon, SignOutIcon } from "@/icons";
 import { Avatar } from "@/primitives/Avatar";
 import { Button } from "@/primitives/Button";
 import { Popover } from "@/primitives/Popover";
+import clsx from "clsx";
+import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
+import { ComponentProps, MouseEventHandler } from "react";
 import { InboxPopover } from "../Inbox";
 import { Logo } from "../Logo";
 import styles from "./DashboardHeader.module.css";
@@ -56,7 +56,7 @@ export function DashboardHeader({
                     icon={<SignOutIcon />}
                     onClick={() => signOut()}
                   >
-                    Sign out
+                    ログアウト
                   </Button>
                 </div>
               </div>

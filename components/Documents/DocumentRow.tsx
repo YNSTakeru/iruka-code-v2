@@ -1,15 +1,3 @@
-import { RoomUser } from "@liveblocks/node";
-import clsx from "clsx";
-import { formatDistanceToNow } from "date-fns/formatDistanceToNow";
-import Link from "next/link";
-import { useSession } from "next-auth/react";
-import {
-  ComponentProps,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
 import { DOCUMENT_URL } from "@/constants";
 import { DeleteIcon, MoreIcon } from "@/icons";
 import { useGroupsInfo } from "@/lib/hooks";
@@ -19,6 +7,18 @@ import { Button } from "@/primitives/Button";
 import { Popover } from "@/primitives/Popover";
 import { Skeleton } from "@/primitives/Skeleton";
 import { Document, DocumentAccess } from "@/types";
+import { RoomUser } from "@liveblocks/node";
+import clsx from "clsx";
+import { formatDistanceToNow } from "date-fns/formatDistanceToNow";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
+import {
+  ComponentProps,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { DocumentDeleteDialog } from "./DocumentDeleteDialog";
 import { DocumentIcon } from "./DocumentIcon";
 import styles from "./DocumentRow.module.css";
@@ -121,7 +121,7 @@ export function DocumentRow({
                   onOpenChange={handleDeleteDialogOpenChange}
                 >
                   <Button icon={<DeleteIcon />} variant="subtle">
-                    Delete
+                    削除
                   </Button>
                 </DocumentDeleteDialog>
               </div>

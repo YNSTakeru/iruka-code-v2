@@ -1,15 +1,3 @@
-import { ClientSideSuspense } from "@liveblocks/react";
-import {
-  useInboxNotifications,
-  useMarkAllInboxNotificationsAsRead,
-} from "@liveblocks/react/suspense";
-import {
-  InboxNotification,
-  InboxNotificationCustomKindProps,
-  InboxNotificationList,
-} from "@liveblocks/react-ui";
-import clsx from "clsx";
-import { ComponentProps } from "react";
 import { DocumentIcon } from "@/components/Documents";
 import { DOCUMENT_URL } from "@/constants";
 import { getDocument } from "@/lib/actions";
@@ -17,6 +5,18 @@ import { useDocumentsFunctionSWR } from "@/lib/hooks";
 import { Button, LinkButton } from "@/primitives/Button";
 import { Link } from "@/primitives/Link";
 import { Spinner } from "@/primitives/Spinner";
+import { ClientSideSuspense } from "@liveblocks/react";
+import {
+  InboxNotification,
+  InboxNotificationCustomKindProps,
+  InboxNotificationList,
+} from "@liveblocks/react-ui";
+import {
+  useInboxNotifications,
+  useMarkAllInboxNotificationsAsRead,
+} from "@liveblocks/react/suspense";
+import clsx from "clsx";
+import { ComponentProps } from "react";
 import styles from "./Inbox.module.css";
 
 function InboxContent(props: ComponentProps<"div">) {
@@ -26,7 +26,7 @@ function InboxContent(props: ComponentProps<"div">) {
     <div {...props}>
       {inboxNotifications.length === 0 ? (
         <div className={styles.emptyState}>
-          <p>There aren’t any notifications yet.</p>
+          <p>この機能は未実装です</p>
         </div>
       ) : (
         <InboxNotificationList>
@@ -89,9 +89,9 @@ export function Inbox({ className, ...props }: ComponentProps<"div">) {
   return (
     <div className={clsx(className, styles.inbox)} {...props}>
       <div className={styles.inboxHeader}>
-        <h2>Notifications</h2>
+        <h2>お知らせ</h2>
         <Button onClick={markAllInboxNotificationsAsRead}>
-          Mark all as read
+          すべて既読にする
         </Button>
       </div>
       <ClientSideSuspense

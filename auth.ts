@@ -1,6 +1,6 @@
-import NextAuth from "next-auth";
 import { authConfig } from "@/auth.config";
 import { getUser } from "@/lib/database/getUser";
+import NextAuth from "next-auth";
 
 // Your NextAuth secret (generate a new one for production)
 // More info: https://next-auth.js.org/configuration/options#secret

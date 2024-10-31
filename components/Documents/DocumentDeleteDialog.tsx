@@ -1,7 +1,7 @@
-import { ComponentProps } from "react";
 import { deleteDocument } from "@/lib/actions";
 import { Button } from "@/primitives/Button";
 import { Dialog } from "@/primitives/Dialog";
+import { ComponentProps } from "react";
 import styles from "./DocumentDeleteDialog.module.css";
 
 interface Props
@@ -39,20 +39,20 @@ export function DocumentDeleteDialog({
       content={
         <div className={styles.dialog}>
           <p className={styles.description}>
-            This will permanently delete the document.
+            データを完全に削除します。この操作は取り消せません。
           </p>
           <div className={styles.buttons}>
             <Button onClick={() => onOpenChange(false)} variant="secondary">
-              Cancel
+              キャンセル
             </Button>
             <Button onClick={handleDeleteDocument} variant="destructive">
-              Delete
+              削除
             </Button>
           </div>
         </div>
       }
       onOpenChange={onOpenChange}
-      title="Delete document"
+      title="コード削除"
       {...props}
     >
       {children}
