@@ -92,7 +92,7 @@ export function DocumentRow({
             ) : null}
           </span>
           <span className={styles.documentDate}>
-            Edited {formatDistanceToNow(date)} ago
+            {formatDistanceToNow(date)} 前に編集
           </span>
         </div>
         {others && (

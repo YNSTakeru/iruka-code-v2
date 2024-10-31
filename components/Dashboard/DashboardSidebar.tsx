@@ -53,7 +53,7 @@ export function DashboardSidebar({ className, groups, ...props }: Props) {
           <ul className={styles.list}>
             <li>
               <SidebarLink href={DASHBOARD_URL} icon={<FileIcon />}>
-                All
+                全てのコード
               </SidebarLink>
             </li>
           </ul>

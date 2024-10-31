@@ -12,7 +12,6 @@ import { Button } from "@/primitives/Button";
 import { Container } from "@/primitives/Container";
 import { Spinner } from "@/primitives/Spinner";
 import { DocumentType, Group } from "@/types";
-import { capitalize } from "@/utils";
 import clsx from "clsx";
 import { useSession } from "next-auth/react";
 import { ComponentProps, useMemo, useState } from "react";
@@ -100,7 +99,7 @@ export function DocumentsList({
       >
         <div className={styles.container}>
           <div className={styles.emptyState}>
-            <p>You don’t have access to these documents.</p>
+            <p>これらのコードににあなたはアクセスできません。</p>
           </div>
         </div>
       </Container>
@@ -128,9 +127,7 @@ export function DocumentsList({
       {...props}
     >
       <div className={styles.header}>
-        <h1 className={styles.headerTitle}>
-          {group?.name ?? capitalize(filter)}
-        </h1>
+        <h1 className={styles.headerTitle}>{"全コード一覧"}</h1>
         <div className={styles.headerActions}>{createDocumentButton}</div>
       </div>
 
@@ -159,7 +156,7 @@ export function DocumentsList({
             </>
           ) : (
             <div className={styles.emptyState}>
-              <p>No documents yet.</p>
+              <p>まだコードは作成されていません。</p>
               {createDocumentButton}
             </div>
           )
