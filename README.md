@@ -9,6 +9,14 @@
  ## オリジナルプロダクトのURL
  [ユーザーとしてアクセスする](https://iruka-code.vercel.app/text/m9btARdR9GuCVSiVHDwRA)
 
+ 実際にログインする際は以下のメールアドレスとパスワードでお試しください。
+
+- メールアドレス
+    - `testuser@example.com`
+- パスワード
+    - `testpassword`
+
+
  [トップページはこちら](https://iruka-code.vercel.app/)
 
 ## 画面キャプチャ
